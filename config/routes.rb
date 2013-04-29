@@ -1,4 +1,6 @@
 Whim::Application.routes.draw do
+  get "viewer/index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
