@@ -39,4 +39,7 @@ gem 'jquery-rails'
 gem 'github-markup', '0.7.5'
 gem 'grit', '2.5.0'
 gem 'settingslogic'
+
+gem "therubyracer"
+gem "less-rails"
 gem 'twitter-bootstrap-rails'
