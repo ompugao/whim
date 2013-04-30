@@ -36,4 +36,5 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
-gem 'github-markup'
+gem 'github-markup', '0.7.5'
+gem 'grit', '2.5.0'
