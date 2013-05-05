@@ -7,3 +7,4 @@ Mime::Type.register "image/jpeg", :jpg
 Mime::Type.register_alias "text/html", :markdown
 Mime::Type.register_alias "text/html", :mkd
 Mime::Type.register_alias "text/html", :md
+Mime::Type.register_alias "text/html", :page

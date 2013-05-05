@@ -22,12 +22,14 @@ class ViewerController < ApplicationController
   end
 
   def show
-    @file_path = params[:id]
+    @file_path = CGI.unescape(params[:id])
+    @file_data = @repo.file_data(@file_path)
     respond_to do |format|
       format.html
       format.markdown
       format.mkd {render 'markdown'}
       format.md {render 'markdown'}
+      format.md {render 'page'}
     end
   end
 

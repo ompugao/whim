@@ -12,4 +12,9 @@ class GitRepository
   def repo_path
     @gitrepo.working_dir
   end
+
+  def file_data path
+    path = path[1..-1] if path[0] == '/'
+    (@gitrepo.tree / (path.unpack("M")[0])) . data
+  end
 end

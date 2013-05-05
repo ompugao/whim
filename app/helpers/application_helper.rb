@@ -1,4 +1,9 @@
+require 'redcarpet'
+require 'cgi'
+
 module ApplicationHelper
+
+  @@markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true)
 
   def listup_gittree(tree, path = "")
     ret = ""
@@ -13,15 +18,19 @@ module ApplicationHelper
       else
         ret += <<-EOS
         <li>
-        <%= link_to '#{elm.name}',
+        <%= link_to "#{(elm.name)}",
          {:controller => 'viewer',
           :action => 'show',
-          :id => '#{path + '/' + File.basename(elm.name, '.*')}',
-          :format => '#{File.extname(elm.name)[1..-1]}'} %>
+          :id => "#{CGI.escape(path + '/' + File.basename(elm.name, '.*'))}",
+          :format => "#{File.extname(elm.name)[1..-1]}"} %>
          </li>
         EOS
       end
     end
     ret
+  end
+
+  def mkd2html(data)
+    @@markdown.render(data)
   end
 end
