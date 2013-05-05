@@ -43,3 +43,7 @@ gem 'settingslogic'
 gem "therubyracer"
 gem "less-rails"
 gem 'twitter-bootstrap-rails'
+
+group :development do
+  gem "rails-sh"
+end
