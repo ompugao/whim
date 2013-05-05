@@ -1,5 +1,15 @@
 Whim::Application.routes.draw do
-  get "viewer/index"
+  #resources "viewer" , :constraints => { :id => /[^\/]+/ }
+  resources "viewer", :constraints => { :id => /.+/ }
+#  GET             /photos                 index        photos_path 
+#  GET             /photos/new             new          new_photo_path
+#  POST            /photos                 create       photos_path
+#  GET             /photos/:id             show         photo_path(:id)
+#  GET             /photos/:id/edit        edit         edit_photo_path(:id)
+#  PUT             /photos/:id             update       photo_path(:id)
+#  DELETE          /photos/:id             destroy      photo_path(:id)
+
+  match ':image_path', :controller => :attached_files , :action => :index
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -50,7 +60,7 @@ Whim::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'viewer#index'
 
   # See how all your routes lay out with "rake routes"
 
