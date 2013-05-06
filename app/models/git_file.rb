@@ -6,16 +6,29 @@ class GitFile
     @gitrepo = Grit::Repo.new(Settings.git_repo_path)
 
     path = path[1..-1] if path[0] == '/'
-    @path = (path.unpack("M")[0])
+    @path = path
+    @encoded_path = (@path.unpack("M")[0])
+
+    if @gitrepo.tree / @encoded_path
+      @blob = @gitrepo.tree / @encoded_path
+    else
+      @blob = Grit::Blob.create(@gitrepo, {:name => @encoded_path, :data => ''})
+    end
   end
 
   def data
-    (@gitrepo.tree / @path) . data
+    @blob.data
   end
 
   def data= dat
-    (@gitrepo.tree / @path) . data = dat
+    File.open(File.join(@gitrepo.working_dir,@encoded_path), "w") do |f|
+        f.write(dat)
+    end
     self
   end
-  alias :save :data=
+
+  def save commit_msg
+    Dir.chdir(@gitrepo.working_dir) { @gitrepo.add(@blob.name) }
+    @gitrepo.commit_index(commit_msg)
+  end
 end

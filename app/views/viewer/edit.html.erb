@@ -1,6 +1,12 @@
 <div class="span6">
-  <%= @file_path %><br>
-  <%= text_area_tag "file_data" %>
+  <!--
+  <div class="alert alert-success">
+    <a class="close" data-dismiss="alert">×</a>
+    <strong>更新完了!</strong>更新しました.
+  </div>
+  -->
+  <%= @gitfile.path %><br>
+  <%= text_area_tag 'gitfile[data]', @gitfile.data%>
 </div>
 <div class="span4">
 <%= render :inline => (mkd2html(@gitfile.data)) %> 

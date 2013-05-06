@@ -22,8 +22,8 @@ class ViewerController < ApplicationController
   end
 
   def show
-    @file_path = CGI.unescape(params[:id])
-    @gitfile = ::GitFile.new(@file_path + '.' + params[:format])
+    file_path = CGI.unescape(params[:id])
+    @gitfile = ::GitFile.new(file_path + '.' + params[:format])
     respond_to do |format|
       format.html
       format.markdown
@@ -34,8 +34,8 @@ class ViewerController < ApplicationController
   end
 
   def edit
-    @file_path = CGI.unescape(params[:id])
-    @gitfile = ::GitFile.new(@file_path + '.' + params[:format])
+    file_path = CGI.unescape(params[:id])
+    @gitfile = ::GitFile.new(file_path + '.' + params[:format])
     respond_to do |format|
       format.html
       format.markdown
