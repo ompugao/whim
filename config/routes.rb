@@ -1,6 +1,6 @@
 Whim::Application.routes.draw do
   #resources "viewer" , :constraints => { :id => /[^\/]+/ }
-  resources "viewer", :constraints => { :id => /.+/ }
+  resources "viewer"#, :constraints => { :id => /.+/ }
 #  GET             /photos                 index        photos_path 
 #  GET             /photos/new             new          new_photo_path
 #  POST            /photos                 create       photos_path
