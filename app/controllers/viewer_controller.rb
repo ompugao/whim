@@ -61,6 +61,9 @@ class ViewerController < ApplicationController
   end
 
   def destroy
+    file_path = CGI.unescape(params[:id])
+    @gitfile = ::GitFile.new(file_path + '.' + params[:format])
+    @gitfile.delete("delete " + @gitfile.path)
     respond_to do |format|
       format.html
       format.json { render :json => ''}

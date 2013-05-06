@@ -6,10 +6,10 @@
   </div>
   -->
   <%= @gitfile.path %><br>
-  <%= form_tag('/viewer/' + @gitfile.path, :method => :put) do  %>
+  <%= form_tag('/viewer/' + CGI.escape(@gitfile.path), :method => :put) do  %>
     <%= text_area_tag 'gitfile[data]', @gitfile.data%><br>
     <%= text_field_tag 'gitfile[commitlog]', @default_commitlog%>
-    <%= button_to "Update", {:action => "update", :id => @gitfile.path}, :method => :put, :class => "btn btn-primary" %>
+    <%= button_to "Update", {:action => "update", :id => CGI.escape(@gitfile.path)}, :method => :put, :class => "btn btn-primary" %>
   <% end %>
 </div>
 

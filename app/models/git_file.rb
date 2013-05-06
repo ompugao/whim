@@ -29,6 +29,16 @@ class GitFile
 
   def save commit_msg
     Dir.chdir(@gitrepo.working_dir) { @gitrepo.add(@blob.name) }
-    @gitrepo.commit_index(commit_msg)
+    commit commit_msg
+  end
+
+  def delete commit_msg
+    Dir.chdir(@gitrepo.working_dir) { @gitrepo.remove(@blob.name) }
+    commit commit_msg
+  end
+
+  private
+  def commit msg
+    @gitrepo.commit_index(msg)
   end
 end
