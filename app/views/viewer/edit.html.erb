@@ -1,0 +1,7 @@
+<div class="span6">
+  <%= @file_path %><br>
+  <%= text_area_tag "file_data" %>
+</div>
+<div class="span4">
+<%= render :inline => (mkd2html(@gitfile.data)) %> 
+</div>

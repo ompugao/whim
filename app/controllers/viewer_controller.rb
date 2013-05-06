@@ -23,7 +23,7 @@ class ViewerController < ApplicationController
 
   def show
     @file_path = CGI.unescape(params[:id])
-    @file_data = @repo.file_data(@file_path + '.' + params[:format])
+    @gitfile = ::GitFile.new(@file_path + '.' + params[:format])
     respond_to do |format|
       format.html
       format.markdown
@@ -34,9 +34,14 @@ class ViewerController < ApplicationController
   end
 
   def edit
+    @file_path = CGI.unescape(params[:id])
+    @gitfile = ::GitFile.new(@file_path + '.' + params[:format])
     respond_to do |format|
       format.html
-      format.json { render :json => ''}
+      format.markdown
+      format.mkd 
+      format.md 
+      format.page 
     end
   end
 

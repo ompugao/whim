@@ -3,6 +3,6 @@ class ApplicationController < ActionController::Base
 
   def initialize
     super
-    @repo = GitRepository.new(Settings.git_repo_path)
+    @repo = Grit::Repo.new(Settings.git_repo_path)
   end
 end
