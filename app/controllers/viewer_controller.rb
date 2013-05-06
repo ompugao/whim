@@ -48,7 +48,10 @@ class ViewerController < ApplicationController
   def update
     respond_to do |format|
       format.html
-      format.json { render :json => ''}
+      format.markdown
+      format.mkd 
+      format.md 
+      format.page 
     end
   end
 
