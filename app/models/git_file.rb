@@ -21,19 +21,19 @@ class GitFile
   end
 
   def data= dat
-    File.open(File.join(@gitrepo.working_dir,@encoded_path), "w") do |f|
+    File.open(File.join(@gitrepo.working_dir,@path), "w") do |f|
         f.write(dat)
     end
     self
   end
 
   def save commit_msg
-    Dir.chdir(@gitrepo.working_dir) { @gitrepo.add(@blob.name) }
+    Dir.chdir(@gitrepo.working_dir) { @gitrepo.add(@path) }
     commit commit_msg
   end
 
   def delete commit_msg
-    Dir.chdir(@gitrepo.working_dir) { @gitrepo.remove(@blob.name) }
+    Dir.chdir(@gitrepo.working_dir) { @gitrepo.remove(@path) }
     commit commit_msg
   end
 
