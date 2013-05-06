@@ -36,6 +36,7 @@ class ViewerController < ApplicationController
   def edit
     file_path = CGI.unescape(params[:id])
     @gitfile = ::GitFile.new(file_path + '.' + params[:format])
+    @default_commitlog = "update " + @gitfile.path
     respond_to do |format|
       format.html
       format.markdown
@@ -46,6 +47,10 @@ class ViewerController < ApplicationController
   end
 
   def update
+    file_path = CGI.unescape(params[:id])
+    @gitfile = ::GitFile.new(file_path + '.' + params[:format])
+    @gitfile.data = params[:gitfile][:data]
+    @gitfile.save params[:gitfile][:commitlog]
     respond_to do |format|
       format.html
       format.markdown
