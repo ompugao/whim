@@ -12,7 +12,7 @@ module ApplicationHelper
         ret += "<li>#{elm.name}</li>"
         ret += <<-EOF
         <li><ul class='nav nav-list'>
-          #{listup_gittree(elm, path + '/' + elm.name)}
+          #{listup_gittree(elm, (path==''?'':path + '/') + elm.name)}
         </ul></li>
         EOF
       else
@@ -21,7 +21,7 @@ module ApplicationHelper
         <%= link_to "#{(elm.name)}",
          {:controller => 'viewer',
           :action => 'show',
-          :id => "#{CGI.escape(path + '/' + File.basename(elm.name, '.*'))}",
+          :id => "#{CGI.escape((path==''?'':path+'/') + File.basename(elm.name, '.*'))}",
           :format => "#{File.extname(elm.name)[1..-1]}"} %>
          </li>
         EOS
