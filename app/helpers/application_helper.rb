@@ -5,14 +5,14 @@ module ApplicationHelper
 
   @@markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true, :tables => true)
 
-  def listup_gittree(tree, path = "")
+  def listup_gittree(tree, pathes = [])
     ret = ""
     tree.contents.each do |elm|
       if elm.class == Grit::Tree
         ret += "<li>#{elm.name}</li>"
         ret += <<-EOF
         <li><ul class='nav nav-list'>
-          #{listup_gittree(elm, (path==''?'':path + '/') + elm.name)}
+          #{listup_gittree(elm, pathes + [CGI.escape(elm.name)])}
         </ul></li>
         EOF
       else
@@ -21,7 +21,7 @@ module ApplicationHelper
         <%= link_to "#{(elm.name)}",
          {:controller => 'viewer',
           :action => 'show',
-          :id => "#{CGI.escape((path==''?'':path+'/') + File.basename(elm.name, '.*'))}",
+          :id => "#{pathes.join('/') + '/' + CGI.escape(File.basename(elm.name, '.*'))}",
           :format => "#{File.extname(elm.name)[1..-1]}"} %>
          </li>
         EOS
