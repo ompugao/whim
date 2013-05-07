@@ -15,9 +15,19 @@ class ViewerController < ApplicationController
   end
 
   def create
+    file_path = self.class.helpers.unescape_path(params[:gitfile][:path])
+    @gitfile = ::GitFile.new(file_path)
+    @gitfile.data = params[:gitfile][:data] 
+    @gitfile.save params[:gitfile][:commitlog]
+
+    params[:format] = File.extname(params[:gitfile][:path])[1..-1].intern
     respond_to do |format|
       format.html
       format.json { render :json => ''}
+      format.markdown
+      format.mkd 
+      format.md 
+      format.page 
     end
   end
 

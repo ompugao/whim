@@ -1,0 +1,16 @@
+<div class="span5">
+  Create a new page:
+
+  <% @default_commitlog = "create a new page" %>
+  <%= form_tag('/viewer', :method => :post) do  %>
+    <%= text_field_tag 'gitfile[path]',"path" %>
+    <%= text_area_tag 'gitfile[data]', "", :class => "field span11", :style => "height:500px;" %><br>
+    <%= text_field_tag 'gitfile[commitlog]', @default_commitlog%>
+    <%= button_to "Create",{:controller => "viewer", :action => "create"}, {:class => "btn btn-primary"} %>
+  <% end %>
+</div>
+
+<div class="span5">
+  Preview:
+
+</div>

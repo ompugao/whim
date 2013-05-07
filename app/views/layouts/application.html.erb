@@ -48,6 +48,7 @@
           <div class="container-fluid nav-collapse">
             <ul class="nav">
               <li><%= link_to "home", "/"  %></li>
+              <li><%= link_to "new", {:controller => "viewer", :action => "new"}  %></li>
               <li><%= link_to "edit", request.url + "/edit" %></li>
               <li><%= link_to "delete", request.url, :method => :delete, :confirm => "***DELETE?****"%></li>
             </ul>
