@@ -30,6 +30,8 @@ class ViewerController < ApplicationController
       format.mkd 
       format.md 
       format.page 
+      format.jpg  { send_data @gitfile.data, :type=>:jpg, :disposition=>'inline' }
+      format.png  { send_data @gitfile.data, :type=>:png, :disposition=>'inline' }
     end
   end
 
