@@ -1,10 +1,10 @@
 Whim::Application.routes.draw do
   #resources "viewer" , :constraints => { :id => /[^\/]+/ }
   #resources "viewer"#, :constraints => { :id => /.+/ }
-  get "viewer/:id" => "viewer#show"
-  get "viewer/*id.:format/edit" => "viewer#edit"
-  put "viewer/:id" => "viewer#update"
-  delete "viewer/:id" => "viewer#destroy"
+  get "viewer/:id" => "viewer#show", :constraints => { :id => /[^\.]+/ }
+  get "viewer/*id.:format/edit" => "viewer#edit", :constraints => { :id => /.+/ }
+  put "viewer/:id" => "viewer#update",:constraints => { :id => /[^\.]+/ }
+  delete "viewer/:id" => "viewer#destroy",:constraints => { :id => /[^\.]+/ }
 #  GET             /photos                 index        photos_path 
 #  GET             /photos/new             new          new_photo_path
 #  POST            /photos                 create       photos_path
@@ -13,7 +13,7 @@ Whim::Application.routes.draw do
 #  PUT             /photos/:id             update       photo_path(:id)
 #  DELETE          /photos/:id             destroy      photo_path(:id)
 
-  match ':image_path', :controller => :attached_files , :action => :index
+  #match ':image_path', :controller => :attached_files , :action => :index
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
