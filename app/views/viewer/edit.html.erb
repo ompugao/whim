@@ -1,4 +1,4 @@
-<div class="span6">
+<div class="span5">
   <!--
   <div class="alert alert-success">
     <a class="close" data-dismiss="alert">×</a>
@@ -6,13 +6,13 @@
   </div>
   -->
   <%= @gitfile.path %><br>
-  <%= form_tag('/viewer/' + CGI.escape(@gitfile.path), :method => :put) do  %>
-    <%= text_area_tag 'gitfile[data]', @gitfile.data%><br>
+  <%= form_tag('/viewer/' + escape_path(@gitfile.path), :method => :put) do  %>
+    <%= text_area_tag 'gitfile[data]', @gitfile.data, :class => "field span11", :style => "height:500px;" %><br>
     <%= text_field_tag 'gitfile[commitlog]', @default_commitlog%>
-    <%= button_to "Update", {:action => "update", :id => CGI.escape(@gitfile.path)}, :method => :put, :class => "btn btn-primary" %>
+    <%= button_to "Update", {:action => "update", :id => escape_path(@gitfile.path).split('.')[0..-2].join}, :method => :put, :class => "btn btn-primary" %>
   <% end %>
 </div>
 
-<div class="span4">
+<div class="span5">
 <%= render :inline => (mkd2html(@gitfile.data)) %> 
 </div>

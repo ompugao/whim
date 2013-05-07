@@ -22,7 +22,7 @@ class ViewerController < ApplicationController
   end
 
   def show
-    file_path = CGI.unescape(params[:id])
+    file_path = self.class.helpers.unescape_path(params[:id])
     @gitfile = ::GitFile.new(file_path + '.' + params[:format])
     respond_to do |format|
       format.html
@@ -36,7 +36,7 @@ class ViewerController < ApplicationController
   end
 
   def edit
-    file_path = CGI.unescape(params[:id])
+    file_path = self.class.helpers.unescape_path(params[:id])
     @gitfile = ::GitFile.new(file_path + '.' + params[:format])
     @default_commitlog = "update " + @gitfile.path
     respond_to do |format|
@@ -49,7 +49,7 @@ class ViewerController < ApplicationController
   end
 
   def update
-    file_path = CGI.unescape(params[:id])
+    file_path = self.class.helpers.unescape_path(params[:id])
     @gitfile = ::GitFile.new(file_path + '.' + params[:format])
     @gitfile.data = params[:gitfile][:data]
     @gitfile.save params[:gitfile][:commitlog]
@@ -63,7 +63,7 @@ class ViewerController < ApplicationController
   end
 
   def destroy
-    file_path = CGI.unescape(params[:id])
+    file_path = self.class.helpers.unescape_path(params[:id])
     @gitfile = ::GitFile.new(file_path + '.' + params[:format])
     @gitfile.delete("delete " + @gitfile.path)
     respond_to do |format|

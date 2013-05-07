@@ -1,10 +1,10 @@
 Whim::Application.routes.draw do
   #resources "viewer" , :constraints => { :id => /[^\/]+/ }
   #resources "viewer"#, :constraints => { :id => /.+/ }
-  get "viewer/:id" => "viewer#show", :constraints => { :id => /[^\.]+/ }
-  get "viewer/*id.:format/edit" => "viewer#edit", :constraints => { :id => /.+/ }
-  put "viewer/:id" => "viewer#update",:constraints => { :id => /[^\.]+/ }
-  delete "viewer/:id" => "viewer#destroy",:constraints => { :id => /[^\.]+/ }
+  get "viewer/:id" => "viewer#show", :constraints => { :id => /[^.]+/ }
+  get "viewer/*id.:format/edit" => "viewer#edit", :constraints => { :id => /[^.]+/ }
+  put "viewer/:id" => "viewer#update",:constraints => { :id => /[^.]+/ }
+  delete "viewer/:id" => "viewer#destroy",:constraints => { :id => /[^.]+/ }
 #  GET             /photos                 index        photos_path 
 #  GET             /photos/new             new          new_photo_path
 #  POST            /photos                 create       photos_path
