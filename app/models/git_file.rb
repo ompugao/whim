@@ -21,6 +21,7 @@ class GitFile
   end
 
   def data= dat
+    FileUtils.mkdir_p(File.join(@gitrepo.working_dir,File.dirname(@path)))
     File.open(File.join(@gitrepo.working_dir,@path), "w") do |f|
         f.write(dat)
     end
