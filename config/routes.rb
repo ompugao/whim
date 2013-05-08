@@ -1,6 +1,8 @@
 Whim::Application.routes.draw do
   #resources "viewer" , :constraints => { :id => /[^\/]+/ }
   #resources "viewer"#, :constraints => { :id => /.+/ }
+  get "edit" => "viewer#edit", :defaults => {:id => ""}
+  get "viewer" => "viewer#index"
   get "viewer/new" => "viewer#new"
   post "viewer" => "viewer#create"
   get "viewer/:id" => "viewer#show", :constraints => { :id => /[^.]+/ }

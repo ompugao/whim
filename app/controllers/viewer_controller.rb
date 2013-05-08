@@ -1,6 +1,7 @@
 class ViewerController < ApplicationController
 
   def index
+    @file_content = ::GitFile.new(Settings.default_page_name).data
     respond_to do |format|
       format.html
       format.json { render :json => ''}
@@ -47,7 +48,11 @@ class ViewerController < ApplicationController
 
   def edit
     file_path = self.class.helpers.unescape_path(params[:id])
-    @gitfile = ::GitFile.new(file_path + '.' + params[:format])
+    unless file_path == ""
+      @gitfile = ::GitFile.new(file_path + '.' + params[:format])
+    else
+      @gitfile = ::GitFile.new(Settings.default_page_name)
+    end
     @default_commitlog = "update " + @gitfile.path
     respond_to do |format|
       format.html
