@@ -6,10 +6,13 @@
   </div>
   -->
   <%= @gitfile.path %><br>
-  <%= form_tag('/viewer/' + escape_path(@gitfile.path), :method => :put) do  %>
+  <% path_wo_suffix = escape_path(@gitfile.path).split('.')[0..-2].join %>
+  <% suffix = escape_path(@gitfile.path).split('.')[-1] %>
+  <%= form_tag(url_for(:controller => "viewer",:action => "update"), :id => path_wo_suffix) do  %>
+    <%= hidden_field_tag 'format', suffix %>
     <%= text_area_tag 'gitfile[data]', @gitfile.data, :class => "field span11 be_previewed", :style => "height:500px;" %><br>
     <%= text_field_tag 'gitfile[commitlog]', @default_commitlog%>
-    <%= button_to "Update", {:action => "update", :id => escape_path(@gitfile.path).split('.')[0..-2].join}, :method => :put, :class => "btn btn-primary" %>
+    <%= button_to "Update", {:action => "update", :id => path_wo_suffix}, :method => :put, :class => "btn btn-primary" %>
   <% end %>
 </div>
 
