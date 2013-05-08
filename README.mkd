@@ -7,6 +7,20 @@ This wiki uses only markdown as a markup language now.
     git clone http://github.com/ompugao/whim
     cd whim
     bundle install --path vendor/path
+
+    # edit config/app_settings.yml
+    cat > config/app_settings.yml
+    defaults: &defaults
+      git_repo_path: "fullpath/to/git/repository"
+      default_page_name: "Front Page.markdown" 
+    development:
+      <<: *defaults
+    test:
+      <<: *defaults
+    production:
+      <<: *defaults
+
+    # run
     bundle exec rails server
 
     xdg-open http://localhost:3000/
