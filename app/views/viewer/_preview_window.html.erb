@@ -1,0 +1,9 @@
+<%= javascript_tag do %>
+  var mkd2html_api = '<%= raw "#{request.protocol}#{request.host_with_port}/api/markdown2html.json" %>';
+<% end %>
+<%= javascript_include_tag "jquery" %>
+<%= javascript_include_tag "preview_markdown.js" %> 
+
+Preview:
+<p id="preview">
+</p>

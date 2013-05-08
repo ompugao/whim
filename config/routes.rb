@@ -7,6 +7,8 @@ Whim::Application.routes.draw do
   get "viewer/*id(.:format)/edit" => "viewer#edit", :constraints => { :id => /[^.]+/ }
   put "viewer/:id" => "viewer#update",:constraints => { :id => /[^.]+/ }
   delete "viewer/:id" => "viewer#destroy",:constraints => { :id => /[^.]+/ }
+  post "api/markdown2html" => "api#markdown2html"
+  
 #  GET             /photos                 index        photos_path 
 #  GET             /photos/new             new          new_photo_path
 #  POST            /photos                 create       photos_path
