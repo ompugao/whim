@@ -1,0 +1,13 @@
+# Whim
+A wiki using git repository as a backend.
+This wiki uses only markdown as a markup language now.
+
+# Install
+
+    git clone http://github.com/ompugao/whim
+    cd whim
+    bundle install --path vendor/path
+    bundle exec rails server
+
+    xdg-open http://localhost:3000/
+
