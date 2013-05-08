@@ -1,5 +1,5 @@
 <%= javascript_tag do %>
-  var mkd2html_api = '<%= raw "#{request.protocol}#{request.host_with_port}/api/markdown2html.json" %>';
+  var mkd2html_api = '<%= url_for :controller => 'api', :action => 'markdown2html', :only_path => false %>';
 <% end %>
 <%= javascript_include_tag "jquery" %>
 <%= javascript_include_tag "preview_markdown.js" %> 
