@@ -1,7 +1,7 @@
 class ViewerController < ApplicationController
 
   def index
-    @file_content = ::GitFile.new(Settings.default_page_name).data
+    @file_content = self.class.helpers.mkd2html(::GitFile.new(Settings.default_page_name).data).html_safe
     respond_to do |format|
       format.html
       format.json { render :json => ''}
