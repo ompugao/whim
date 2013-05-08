@@ -2,7 +2,7 @@
   Create a new page:
 
   <% @default_commitlog = "create a new page" %>
-  <%= form_tag('/viewer', :method => :post) do  %>
+  <%= form_tag(url_for(:controller => "viewer",:action => "create")) do  %>
     <%= text_field_tag 'gitfile[path]',"path" %>
     <%= text_area_tag 'gitfile[data]', "", :class => "field span11 be_previewed", :style => "height:500px;" %><br>
     <%= text_field_tag 'gitfile[commitlog]', @default_commitlog%>
