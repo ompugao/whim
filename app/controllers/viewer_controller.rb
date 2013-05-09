@@ -43,6 +43,7 @@ class ViewerController < ApplicationController
       format.page 
       format.jpg  { send_data @gitfile.data, :type=>:jpg, :disposition=>'inline' }
       format.png  { send_data @gitfile.data, :type=>:png, :disposition=>'inline' }
+      format.pdf  { send_file File.join(Settings.git_repo_path,file_path + '.' + params[:format])}
     end
   end
 
