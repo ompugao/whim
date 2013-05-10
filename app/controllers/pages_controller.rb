@@ -1,4 +1,4 @@
-class ViewerController < ApplicationController
+class PagesController < ApplicationController
 
   def index
     @file_content = self.class.helpers.mkd2html(::GitFile.new(Settings.default_page_name).data).html_safe

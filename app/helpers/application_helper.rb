@@ -29,7 +29,7 @@ module ApplicationHelper
         ret += <<-EOS
         <li>
         <%= link_to "#{(elm.name)}",
-         {:controller => 'viewer', :action => 'show', :id => "#{filepath}",
+         {:controller => 'pages', :action => 'show', :id => "#{filepath}",
           :format => "#{File.extname(elm.name)[1..-1]}"} %>
          </li>
         EOS

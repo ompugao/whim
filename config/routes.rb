@@ -1,14 +1,14 @@
 Whim::Application.routes.draw do
-  #resources "viewer" , :constraints => { :id => /[^\/]+/ }
-  #resources "viewer"#, :constraints => { :id => /.+/ }
-  get "edit" => "viewer#edit", :defaults => {:id => ""}
-  get "viewer" => "viewer#index"
-  get "viewer/new" => "viewer#new"
-  post "viewer" => "viewer#create"
-  get "viewer/:id" => "viewer#show", :constraints => { :id => /[^.]+/ }
-  get "viewer/*id(.:format)/edit" => "viewer#edit", :constraints => { :id => /[^.]+/ }
-  put "viewer/:id" => "viewer#update",:constraints => { :id => /[^.]+/ }
-  delete "viewer/:id" => "viewer#destroy",:constraints => { :id => /[^.]+/ }
+  #resources "pages" , :constraints => { :id => /[^\/]+/ }
+  #resources "pages"#, :constraints => { :id => /.+/ }
+  get "edit" => "pages#edit", :defaults => {:id => ""}
+  get "pages" => "pages#index"
+  get "pages/new" => "pages#new"
+  post "pages" => "pages#create"
+  get "pages/:id" => "pages#show", :constraints => { :id => /[^.]+/ }
+  get "pages/*id(.:format)/edit" => "pages#edit", :constraints => { :id => /[^.]+/ }
+  put "pages/:id" => "pages#update",:constraints => { :id => /[^.]+/ }
+  delete "pages/:id" => "pages#destroy",:constraints => { :id => /[^.]+/ }
   post "api/markdown2html" => "api#markdown2html"
   
 #  GET             /photos                 index        photos_path 
@@ -70,7 +70,7 @@ Whim::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'viewer#index'
+  root :to => 'pages#index'
 
   # See how all your routes lay out with "rake routes"
 
