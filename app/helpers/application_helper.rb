@@ -3,7 +3,8 @@ require 'cgi'
 
 module ApplicationHelper
 
-  @@markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true, :tables => true)
+  @@markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true, :tables => true, :fenced_code_blocks => true, :autolink => true)
+
 
   def listup_gittree(tree, path = "")
     ret = ""
