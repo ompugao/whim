@@ -6,9 +6,9 @@ Whim::Application.routes.draw do
   get "pages/new" => "pages#new"
   post "pages" => "pages#create"
   get "pages/:id" => "pages#show", :constraints => { :id => /[^.]+/ }
-  get "pages/*id(.:format)/edit" => "pages#edit", :constraints => { :id => /[^.]+/ }
-  put "pages/:id" => "pages#update",:constraints => { :id => /[^.]+/ }
-  delete "pages/:id" => "pages#destroy",:constraints => { :id => /[^.]+/ }
+  get "pages/*id.:format/edit" => "pages#edit", :constraints => { :id => /[^.]+/ }
+  put "pages/:id.:format" => "pages#update",:constraints => { :id => /[^.]+/ }
+  delete "pages/:id(.:format)" => "pages#destroy",:constraints => { :id => /[^.]+/ }
   post "api/markdown2html" => "api#markdown2html"
   
 #  GET             /photos                 index        photos_path 
