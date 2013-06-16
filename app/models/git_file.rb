@@ -1,12 +1,13 @@
 require 'grit'
 
 class GitFile
-  attr_reader :path
+  attr_reader :path, :filename
   def initialize path
     @gitrepo = Grit::Repo.new(Settings.git_repo_path)
 
     path = path[1..-1] if path[0] == '/'
     @path = path
+    @filename = File.basename(path,'*')
     @encoded_path = (@path.unpack("M")[0])
 
     if @gitrepo.tree / @encoded_path

@@ -1,6 +1,7 @@
 <div class="span5">
   Create a new page:
 
+  <% content_for (:title) { "Create " + @gitfile.filename } %>
   <% @default_commitlog = "create a new page" %>
   <%= form_tag(url_for(:controller => "pages",:action => "create")) do  %>
     <%= text_field_tag 'gitfile[path]',"path" %>

@@ -5,6 +5,7 @@
     <strong>更新完了!</strong>更新しました.
   </div>
   -->
+  <% content_for (:title) { "Edit " + @gitfile.filename } %>
   <%= @gitfile.path %><br>
   <% path_wo_suffix = escape_path(@gitfile.path).split('.')[0..-2].join %>
   <% suffix = escape_path(@gitfile.path).split('.')[-1] %>

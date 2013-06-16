@@ -1,5 +1,5 @@
 <div class="span10">
 <%= @gitfile.path %>
-
+<% content_for(:title) { @gitfile.filename } %>
 <%= render :inline => (mkd2html(@gitfile.data)) %> 
 </div>
