@@ -69,6 +69,8 @@ class PagesController < ApplicationController
     @gitfile = ::GitFile.new(file_path + '.' + params[:format])
     @gitfile.data = params[:gitfile][:data]
     @gitfile.save params[:gitfile][:commitlog]
+    # reload file
+    @gitfile = ::GitFile.new(file_path + '.' + params[:format])
     respond_to do |format|
       format.html
       format.markdown
