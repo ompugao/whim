@@ -10,7 +10,7 @@ module ApplicationHelper
     ret = ""
     tree.contents.each do |elm|
       if elm.class == Grit::Tree
-        ret += "<li>#{elm.name}</li>"
+        ret += "<li class='nav-header'>#{elm.name}/</li>"
         ret += <<-EOF
         <li><ul class='nav nav-list'>
           #{listup_gittree(elm, path + '/' + elm.name)}
@@ -30,7 +30,7 @@ module ApplicationHelper
         <li>
         <%= link_to "#{(elm.name)}",
          {:controller => 'pages', :action => 'show', :id => "#{filepath}",
-          :format => "#{File.extname(elm.name)[1..-1]}"} %>
+          :format => "#{File.extname(elm.name)[1..-1]}"}, {:class => "bloblink"} %>
          </li>
         EOS
       end
