@@ -67,6 +67,7 @@
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span2">
+          <input id="filterwordinput" type="text" class="form-control" placeholder="filter by filename">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
               <li class="nav-header">Pages</li>
@@ -88,6 +89,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <%= javascript_include_tag "application" %>
-
+    <%= javascript_include_tag "jquery" %>
+    <%= javascript_include_tag "filename_filter.js" %> 
   </body>
 </html>

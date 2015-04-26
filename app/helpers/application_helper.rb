@@ -27,7 +27,7 @@ module ApplicationHelper
         end
         filepath = escape_path(trim_first_slashes(filepath))
         ret += <<-EOS
-        <li>
+        <li id='blobelem'>
         <%= link_to "#{(elm.name)}",
          {:controller => 'pages', :action => 'show', :id => "#{filepath}",
           :format => "#{File.extname(elm.name)[1..-1]}"}, {:class => "bloblink"} %>
